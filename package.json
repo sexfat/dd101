@@ -1,0 +1,22 @@
+{
+  "name": "dd101",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fancybox": "^3.0.1",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.5",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.12.0"
+  }
+}

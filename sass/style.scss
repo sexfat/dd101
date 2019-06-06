@@ -1,0 +1,63 @@
+@import "base/var";
+
+
+
+body {
+    font-size: $fontSize;
+    font-family: $fontFamily;
+}
+
+.body-all {
+    h1 {
+        color: $blue;
+        font-size: $fontSize;
+
+        em {
+            font-size: 18px;
+        }
+    }
+
+    .section {
+        height: 120px;
+
+        h2 {
+            color: $blue;
+        }
+    }
+}
+
+span {
+    font-size: $fontSize;
+}
+
+
+
+@mixin marginauto() {
+    .box { 
+        margin-left: auto;
+        margin-right: auto;
+        h2 {
+            font-size: 10px;
+        }
+    }
+}
+
+
+@mixin marginautos($num) {
+    margin-left: auto;
+    margin-right: auto;
+    width: $num;
+}
+
+
+
+.box {
+    @include marginauto();
+}
+
+
+.box2 {
+    @include marginautos(200vw);
+}
+
+@include marginauto();
