@@ -67,8 +67,9 @@ span {
 @mixin color_lighten($color,
 $amount) {
     @for $i from 1 through $amount {
-
-        background-color: lighten($color, $i*1.4);
+        &:nth-child(#{$i}){
+        background-color: lighten($color, $i*1.6);
+        }
 
     }
 }
@@ -78,9 +79,9 @@ $amount) {
 .gradient {
     .rect {
         width: 400px;
-        height: 30px;
+        height: 80px;
         //    background-color: rgb(228, 228, 228); 
-        margin-bottom: 9px;
-        @include color_lighten(rgb(255, 255, 2), 6);
-    }
+        margin-bottom: 19px;
+        @include color_lighten(rgb(0, 0, 0), 8);
+  }
 }
