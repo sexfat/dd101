@@ -40,7 +40,7 @@ function browserSyncReload(done) {
 //watch files
 function watchfiles() {
     watch(['./sass/*.scss' , './sass/**/*.scss'] ,{ events: 'all' },series(sass,browserSyncReload));
-    watch(['./*.html', './**/*.html'],{ events: 'all' } ,browserSyncReload)
+    watch(['./*.html', './**/*.html'],{ queue: false } ,browserSyncReload)
 }
 
 

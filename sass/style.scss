@@ -67,8 +67,9 @@ span {
 @mixin color_lighten($color,
 $amount) {
     @for $i from 1 through $amount {
-
-        background-color: lighten($color, $i*1.4);
+        &:nth-child(#{$i}){
+        background-color: lighten($color, $i*1.6);
+        }
 
     }
 }
@@ -81,6 +82,6 @@ $amount) {
         height: 50px;
         //    background-color: rgb(228, 228, 228); 
         margin-bottom: 19px;
-        @include color_lighten(rgb(255, 255, 2), 6);
+        @include color_lighten(rgb(0, 0, 0), 8);
     }
 }
