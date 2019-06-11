@@ -39,8 +39,8 @@ function browserSyncReload(done) {
 
 //watch files
 function watchfiles() {
-    watch(['./sass/*.scss' , './sass/**/*.scss'] , sass);
-    watch(['./', './**/*'], series(browserSyncReload))
+    watch(['./sass/*.scss' , './sass/**/*.scss'] ,{ events: 'all' },series(sass,browserSyncReload));
+    watch(['./*.html', './**/*.html'],{ events: 'all' } ,browserSyncReload)
 }
 
 
@@ -52,7 +52,7 @@ function miniCss(){
 }
 
 
-const watcher = series(sass, parallel( watchfiles , browserSync));
+const watcher = series(sass , parallel(watchfiles, browserSync));
 
 exports.mini = miniCss;
 exports.default = watcher;
