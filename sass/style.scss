@@ -7,6 +7,8 @@
 body {
     font-size: $fontSize;
     font-family: $fontFamily;
+    height: 3500px;
+    @include body-fonts($fontSize);
 }
 
 .body-all {
@@ -72,7 +74,7 @@ span {
 @include rect-color ('.section02', 100vw, 400px, rgb(175, 247, 31));
 
 
-.fontSize100 {
+%fontSize100 {
     font-size: 100px;
     color: #000;
 }
@@ -83,10 +85,6 @@ span {
     color: #000;
 }
 
-body {
-    //@extend .fontSize100;
-    @include fontSize100();
-}
 
 
 .spec {
@@ -94,3 +92,85 @@ body {
     @include box-sizing(border-box);
     background-color: rgb(0, 60, 255);
 }
+
+span {
+    @extend %fontSize100;
+}
+
+.btn {
+    width: 500px;
+    height: 60px;
+    border: 1px solid #000;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgb(212, 255, 0);
+    }
+}
+
+.blue-btn {
+    @extend .btn;
+    background-color: rgb(46, 103, 247);
+}
+
+
+
+
+.yellow-btn {
+    @extend .btn;
+    //@include btn();
+    background-color: rgb(255, 251, 6);
+}
+
+
+.btn-shadow {
+    @extend .btn;
+    background-color: rgb(200, 0, 255);
+    @include hover_shadow (3px, 2px, 10px, rgb(255, 17, 17));
+}
+
+
+.btn-wide {
+    @extend .btn;
+    background-color: rgb(33, 230, 33);
+    @include hover_shadow (3px, 2px, 10px, rgb(64, 154, 0));
+}
+
+$numbs : 100px;
+
+.opct {
+    width: 10% + 50;
+    height: 10% - 100;
+    //    font-size:  $numbs * 3;
+    max-width: (100 / 10) + px;
+}
+
+.wide {
+    font-size: floor(100 / 3.2) + px; //無條件捨去
+    width: round(10 * 2.55) + px; //四捨五入;
+    height: ceil(10 * 3.66) + px; // 無條件進位
+}
+
+body {
+    @include theme($theme);
+}
+
+@for $i from 1 through 100 {
+    .boxs-#{$i} {
+        width: $i * 1px;
+    }
+}
+
+
+@include push-dec(100);
+
+
+@include push(top,100);
+@include push(right,50);
+@include push(bottom,150);
+
+// .blue-btn {
+
+//     margin-left:100px; 
+// }
+

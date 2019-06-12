@@ -52,7 +52,7 @@
         background-color: $bgc;
         width: $width;
         height: $height;
-        @content;  
+        @content;
     }
 }
 
@@ -61,5 +61,87 @@
     -webkit-box-sizing: $box-model;
     -moz-box-sizing: $box-model;
     box-sizing: $box-model;
-
 }
+
+
+@mixin btn() {
+    width: 100px;
+    height: 40px;
+    border: 1px solid #000;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(252, 171, 171);
+    }
+}
+
+
+@mixin box-shadow($h_shadow ,$v_shadow,$blur,$color){
+    box-shadow: $h_shadow  $v_shadow $blur $color;
+    -moz-box-shadow: $h_shadow  $v_shadow $blur $color;
+    -webkit-box-shadow: $h_shadow  $v_shadow $blur $color;
+  }
+
+
+@mixin hover_shadow($value_x, $value_y, $value_blur, $color) {
+    transition: all .3s ease;
+    &:hover {
+        @include box-shadow($value_x, $value_y, $value_blur, $color);
+    }
+}
+
+
+@mixin body-fonts($fontSize) {
+    h1 {
+        font-size: round($fontSize * 5);
+    }
+    h2 {
+        font-size: round($fontSize * 4);
+    }
+    h3 {
+        font-size: round($fontSize * 2.6);
+    }
+    h4 {
+        font-size: round($fontSize * 1.8);
+    }
+    h5 {
+        font-size: round($fontSize * 1.2);
+    }
+} 
+
+
+@mixin theme ($theme) {
+    @if $theme==blue {
+        background-color: rgb(47, 0, 255);
+        color: #f20;
+    }
+
+    @else if $theme==black {
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 217, 0);
+    }
+
+    @else {
+        background-color: #fff;
+        color: black;
+    }
+}
+
+
+
+@mixin push-dec($num) {
+    @for $i from 1 through $num {
+        .margin-left-#{$i} {
+            margin-left:  $i * 1px;
+        }
+    }
+}
+
+
+@mixin push($dir, $num) {
+    @for $i from 1 through $num {
+        .margin-#{$dir}-#{$i} {
+            margin-#{$dir} : $i * 1px;
+        }
+    }
+}
+
