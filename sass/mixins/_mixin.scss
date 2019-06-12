@@ -1,0 +1,65 @@
+@mixin color_lighten($color,
+    $amount) {
+    @for $i from 1 through $amount {
+        &:nth-child(#{$i}) {
+            background-color: lighten($color, $i*3);
+        }
+    }
+}
+
+
+
+.gradient {
+    .rect {
+        width: 400px;
+        height: 50px;
+        //    background-color: rgb(228, 228, 228); 
+        margin-bottom: 19px;
+        @include color_lighten(rgb(255, 143, 143), 8);
+    }
+}
+
+@mixin marginautos($num) {
+    margin-left: auto;
+    margin-right: auto;
+    width: $num;
+}
+
+@mixin marginauto() {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin rect ($width:null, $height:null) {
+    width: $width;
+    height: $height;
+}
+
+@mixin rects ($width:800px, $height:600px) {
+    width: $width;
+    height: $height;
+}
+
+@mixin margin($left, $right, $width, $height) {
+    margin-left: $left;
+    margin-right: $right;
+    @include rect($width, $height)
+}
+
+
+@mixin rect-color($classname, $width, $height, $bgc:null) {
+    #{$classname} {
+        background-color: $bgc;
+        width: $width;
+        height: $height;
+        @content;  
+    }
+}
+
+
+@mixin box-sizing ($box-model) {
+    -webkit-box-sizing: $box-model;
+    -moz-box-sizing: $box-model;
+    box-sizing: $box-model;
+
+}

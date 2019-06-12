@@ -1,4 +1,6 @@
 @import "base/var";
+@import "mixins/mixin";
+
 
 
 
@@ -31,27 +33,6 @@ span {
 }
 
 
-
-@mixin marginauto() {
-    .box {
-        margin-left: auto;
-        margin-right: auto;
-
-        h2 {
-            font-size: 10px;
-        }
-    }
-}
-
-
-@mixin marginautos($num) {
-    margin-left: auto;
-    margin-right: auto;
-    width: $num;
-}
-
-
-
 .box {
     @include marginauto();
 }
@@ -61,27 +42,55 @@ span {
     @include marginautos(200vw);
 }
 
-@include marginauto();
 
+.box4 {
+    @include margin(10px, 20px, 400px, 150px);
+}
 
-@mixin color_lighten($color,
-$amount) {
-    @for $i from 1 through $amount {
-        &:nth-child(#{$i}){
-        background-color: lighten($color, $i*1.6);
-        }
+.box5 {
+    @include rect(100px, 400px);
+}
 
-    }
+.box6 {
+    @include rects();
 }
 
 
+@include rect-color ('.section01', 100vw, 300px, #f20) {
+    color: #fff;
+    font-size: 100px;
+    padding-top: 50px;
+    @include box-sizing(border-box);
 
-.gradient {
-    .rect {
-        width: 400px;
-        height: 80px;
-        //    background-color: rgb(228, 228, 228); 
-        margin-bottom: 19px;
-        @include color_lighten(rgb(0, 0, 0), 8);
-  }
+    a {
+        &:hover {
+            color: rgb(0, 255, 21);
+        }
+    }
+}
+
+@include rect-color ('.section02', 100vw, 400px, rgb(175, 247, 31));
+
+
+.fontSize100 {
+    font-size: 100px;
+    color: #000;
+}
+
+
+@mixin fontSize100() {
+    font-size: 100px;
+    color: #000;
+}
+
+body {
+    //@extend .fontSize100;
+    @include fontSize100();
+}
+
+
+.spec {
+    @include rect(800px, 200px);
+    @include box-sizing(border-box);
+    background-color: rgb(0, 60, 255);
 }
