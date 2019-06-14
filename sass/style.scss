@@ -1,7 +1,6 @@
 @import "base/var";
 @import "mixins/mixin";
-
-
+@import  "page/moblie";
 
 
 body {
@@ -155,22 +154,137 @@ body {
     @include theme($theme);
 }
 
-@for $i from 1 through 100 {
+@for $i from 1 through 10 {
     .boxs-#{$i} {
         width: $i * 1px;
     }
 }
 
 
-@include push-dec(100);
+@include push-dec(10);
 
 
-@include push(top,100);
-@include push(right,50);
-@include push(bottom,150);
+@include push(top, 1);
+@include push(right, 5);
+@include push(bottom, 1);
 
 // .blue-btn {
 
 //     margin-left:100px; 
 // }
+
+
+
+$types: (defaule : #333,
+    primary : #428bca,
+    second : #ff0000) !default;
+
+//按鈕
+@each $name,
+$color in $types {
+    .btn-#{$name} {
+        background: $color;
+        color: #fff;
+        border: 1px solid darken($color, 5%);
+    }
+}
+
+
+//sass map
+$fontweight : (thin : 300,
+    medium : 500,
+    bold : 800);
+
+//使用 map-get
+.font {
+    font-weight: map-get($fontweight, thin);
+}
+
+
+@each $classnames,
+$value in $fontweight {
+
+    .font-#{$classnames} {
+        font-weight: $value
+    }
+
+}
+
+//color map https://codeburst.io/a-successful-sass-theme-structure-ca9d1c477dc7
+$theme-colors: ('primary': ('base': #384ea9,
+        'light': #e4efff,
+        'dark': #273677),
+    'accent': ('base': #f08110,
+        'light': #ff8100,
+        'dark': #e47f17),
+    'foreground': ('base': #393939,
+        'light': #6e6e6e,
+        'dark': #111),
+    'background': ('base': #f8f5f5,
+        'light': #fff,
+        'dark': #ddd));
+
+
+
+@function theme-color($key: 'primary', $variant: 'base') {
+    $map: map-get($theme-colors, $key);
+    @return map-get($map, $variant);
+}
+
+
+
+$value: a1 a2 a3 a4 box;
+
+@each $img in $value {
+
+    .#{$img}-images {
+        background-image: url('img/#{$img}.jpg');
+        width: 100%;
+        height: auto;
+        background-color: rgb(219, 219, 219);
+    }
+}
+
+$lists: h1 48px #f20,
+h2 36px #000,
+h3 24px #fe2,
+h4 18px #f34;
+
+
+
+
+@mixin title-modules($lists...) {
+
+    @each $title,
+    $fontSize,
+    $color in $lists {
+        #{$title} {
+            font-size: $fontSize;
+            color: $color;
+        }
+    }
+}
+
+
+
+@include title-modules(h1 48px #f20,
+    h2 36px #000,
+    h3 24px #fe2,
+    h4 18px #f34,
+    h5 16px blue);
+
+
+
+
+@mixin grid($num) {
+    @for $i from 1 through $num {
+        .col-md-#{$i} {
+            width: ($i / $num) * 100%
+        }
+    }
+}
+
+
+@include grid(12);
+
 

@@ -12,6 +12,8 @@
     "fancybox": "^3.0.1",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
+    "gulp-file-include": "^2.0.1",
+    "gulp-plumber": "^1.2.1",
     "gulp-watch": "^5.0.1",
     "jquery": "^3.4.1"
   },

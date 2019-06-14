@@ -8,15 +8,18 @@ const {
 } = require('gulp');
 
 
-const style = require('gulp-sass');
+const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
+const fileinclude = require('gulp-file-include');
+const plumber = require('gulp-plumber');
 const browsersync = require('browser-sync').create();
 
 
 // sass
-function sass() {
+function style() {
     return src(['./sass/*.scss' , './sass/**/*.scss'])
-        .pipe(style())
+        // expanded nested compact compressed
+        .pipe(sass({ outputStyle: "expanded" }))
         .pipe(dest('./css'));
 }
 //browserSync
@@ -37,9 +40,13 @@ function browserSyncReload(done) {
 }
 
 
+// html module
+
+
+
 //watch files
 function watchfiles() {
-    watch(['./sass/*.scss' , './sass/**/*.scss'] ,{ events: 'all' },series(sass,browserSyncReload));
+    watch(['./sass/*.scss' , './sass/**/*.scss'] ,{ events: 'all' },series(style,browserSyncReload));
     watch(['./*.html', './**/*.html'],{ queue: false } ,browserSyncReload)
 }
 
@@ -52,7 +59,7 @@ function miniCss(){
 }
 
 
-const watcher = series(sass , parallel(watchfiles, browserSync));
+const watcher = series(style , parallel(watchfiles, browserSync));
 
 exports.mini = miniCss;
 exports.default = watcher;
