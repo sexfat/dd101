@@ -2,6 +2,11 @@
 @import "mixins/mixin";
 @import "modules/all";
 
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
 
 .gradient {
     .rect {
@@ -19,5 +24,40 @@
     border: 2px solid rgb(0, 205, 99);
     //    left: 200px;
     //    top:100px;
+    }
+
+    .section_08 {
+        background-color: rgb(182, 238, 255);
+    
+        .scrollbox_01 {
+            background-color: rgb(255, 185, 185);
+        }
+    
+        .scrollbox_02 {
+            background-color: rgb(255, 251, 191);
+        }
+    
+        .scrollbox_03 {
+            background-color: rgb(218, 185, 255);
+        }
+    }
+
+    .section_02 {
+        transition: all 1s ease-in-out;
+        .cssbox {
+          
+
+        }
+        .textfont {
+             color: rgb(21, 21, 21);
+             transition: all 1s ease-in-out;
+             &.add {
+               color: #000;  
+             }
+        }
+
+        &.on {
+            background-color: rgb(240, 0, 0);
+        }
     }
 }

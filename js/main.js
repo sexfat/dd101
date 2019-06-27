@@ -47,10 +47,10 @@ var controller = new ScrollMagic.Controller();
 
 
 
-//動畫
+//動畫1
 var tl = new TimelineMax({
-   repeat: 2,
-   yoyo: true,
+//    repeat: 1
+//    yoyo: true,
 //    onComplete: alerts
 });
 
@@ -64,10 +64,67 @@ tl.to('.third_01', 1, {
 })
 
 var secen_01 = new ScrollMagic.Scene({
-    triggerElement:'#keypoint'
+    triggerElement:'#keypoint',
+    // duration: 800,
+    reverse:true,
+    triggerHook: 0,
+    offset: 200 
 }).setTween(tl)
 .addIndicators()
 .addTo(controller)
+
+
+
+//動畫2
+
+
+var animation_02 = TweenMax.to('.textfont' , 1 , {
+    y: 600,
+    ease: Bounce.easeOut 
+})
+
+
+var secen_02 = new ScrollMagic.Scene({
+    triggerElement:'#keypoint01',
+    // duration: 800,
+    // reverse:true,
+    triggerHook: 0,
+    // offset: 200 
+}).setClassToggle('.section_02','on').setTween(animation_02)
+.addIndicators()
+.addTo(controller)
+
+
+
+
+
+
+
+// var tlts = new TimelineMax();
+
+//     tlts.add(TweenMax.to('.scrollbox_01', 1, {
+//         x: 200,
+//     }));
+//     tlts.add(TweenMax.to('.scrollbox_02', 1, {
+//         x: 300,
+//     }));
+//     tlts.add(TweenMax.to('.scrollbox_03', 1, {
+//         x: 400,
+//     }));
+
+
+    // var scene_s = new ScrollMagic.Scene({
+    //     triggerElement: "#trigger_05",
+    //     duration: '300%',
+    //     //畫面最上緣
+    //     triggerHook: 0,
+    //     //只出現一次
+    //     // reverse: false,
+    // })
+    // .setPin('.section_08')
+    // .setTween(tlts)
+    // .addIndicators()
+    // .addTo(controller);
 
 
 
