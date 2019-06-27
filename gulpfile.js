@@ -27,7 +27,7 @@ function browserSync(done) {
     browsersync.init({
         server: {
             baseDir: "./",
-            index: "index.html"
+            index: "tween.html"
         },
         port: 3000
     });
@@ -46,6 +46,7 @@ function browserSyncReload(done) {
 
 //watch files
 function watchfiles() {
+    watch(['./js/*.js'] ,{ events: 'all' },series(style,browserSyncReload));
     watch(['./sass/*.scss' , './sass/**/*.scss'] ,{ events: 'all' },series(style,browserSyncReload));
     watch(['./*.html', './**/*.html'],{ queue: false } ,browserSyncReload)
 }

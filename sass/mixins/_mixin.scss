@@ -9,15 +9,7 @@
 
 
 
-.gradient {
-    .rect {
-        width: 400px;
-        height: 50px;
-        //    background-color: rgb(228, 228, 228); 
-        margin-bottom: 19px;
-        @include color_lighten(rgb(255, 143, 143), 8);
-    }
-}
+
 
 @mixin marginautos($num) {
     margin-left: auto;
