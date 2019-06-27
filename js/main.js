@@ -1,6 +1,7 @@
-
-
 console.log('start');
+
+
+
 
 TweenMax.to('.box_01', 1, {
     delay: 0,
@@ -40,11 +41,17 @@ function alerts() {
     alert();
 }
 
+// scrollmagic
+var controller = new ScrollMagic.Controller();
 
+
+
+
+//動畫
 var tl = new TimelineMax({
    repeat: 2,
    yoyo: true,
-   onComplete: alerts
+//    onComplete: alerts
 });
 
 tl.to('.third_01', 1, {
@@ -56,6 +63,11 @@ tl.to('.third_01', 1, {
     y: 100
 })
 
+var secen_01 = new ScrollMagic.Scene({
+    triggerElement:'#keypoint'
+}).setTween(tl)
+.addIndicators()
+.addTo(controller)
 
 
 
@@ -68,4 +80,16 @@ tl.to('.third_01', 1, {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+console.log("end ok");
 
