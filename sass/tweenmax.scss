@@ -7,14 +7,17 @@
     .rect {
         //    background-color: rgb(228, 228, 228); 
         margin-bottom: 1px;
+        position: relative;
         @include color_lighten(rgb(255, 143, 143), 8);
     }
 }
 
 
 .wrapper {
+    position: relative;
     .box_01 {
-       margin-top: 100px;
-       margin-left: 300px; 
+    border: 2px solid rgb(0, 205, 99);
+    //    left: 200px;
+    //    top:100px;
     }
 }
