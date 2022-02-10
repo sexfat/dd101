@@ -23,6 +23,6 @@
   "devDependencies": {
     "browser-sync": "^2.26.5",
     "gulp-sass": "^4.0.2",
-    "node-sass": "^4.12.0"
+    "node-sass": "^7.0.0"
   }
 }
